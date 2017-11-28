@@ -4,6 +4,7 @@ import './App.css';
 import Page from './Page';
 import Form from './Form';
 import Header from './Header';
+import ChildForm from './Form_Child';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div class = "App">
       <Header/>
       <Form/>
+      <ChildForm/>
       <Page/>
       </div>
     );
