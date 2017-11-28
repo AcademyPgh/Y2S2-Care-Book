@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  padding: 10px;
 }
 
 .App-logo {
@@ -37,4 +37,4 @@ button
 {
   padding: 5px;
   border-radius: 5px;
-}
+} 

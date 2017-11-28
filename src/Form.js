@@ -35,7 +35,8 @@ import logo from './logo.png';
           <Form onSubmit={submittedValues => this.setState( { submittedValues } )}>
             { formApi => (
               <form onSubmit={formApi.submitForm} id="form2">
-                <br/>
+              <h2>Caregiver Information</h2>
+                
                 <label htmlFor="firstName">Name</label>
                 <Text class = "text" field="pFirstName" id="pFirstName" placeholder = "First"/>
                 <label htmlFor="lastName"></label>
