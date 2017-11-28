@@ -13,8 +13,12 @@ import logo from './logo.png';
       value: 'legalGuardian'
     },
     {
-      label: "Family/Other",
-      value: 'familyOther'
+      label: "Family",
+      value: 'family'
+    },
+    {
+      label: "Other",
+      value: 'other'
     }
   ];
 
@@ -32,15 +36,15 @@ import logo from './logo.png';
             { formApi => (
               <form onSubmit={formApi.submitForm} id="form2">
                 <br/>
-                <label htmlFor="firstName">First Name</label>
-                <Text class = "text" field="firstName" id="firstName" />
-                <label htmlFor="lastName">Last Name</label>
-                <Text class = "text" field="lastName" id="lastName" /><br/><br/>
+                <label htmlFor="firstName">Name</label>
+                <Text class = "text" field="firstName" id="firstName" placeholder = "First"/>
+                <label htmlFor="lastName"></label>
+                <Text class = "text" field="lastName" id="lastName" placeholder = "Last"/><br/><br/>
                 <label htmlFor="lastName">Address</label>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="House Number" id="House Number" placeholder="House Number"/>
+                <Text class = "text" field="Line 1" id="Line 1" placeholder="Line 1"/>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="Street" id="Street" placeholder="Street"/>
+                <Text class = "text" field="Line 2" id="Line 2" placeholder="Line 2"/>
                 <label htmlFor="lastName" ></label>
                 <Text class = "text" field="City" id="City" placeholder="City"/>
                 <label htmlFor="lastName" ></label>
