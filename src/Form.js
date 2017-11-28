@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Text, Radio, RadioGroup, Select, Checkbox, TextArea } from 'react-form';
 import logo from './logo.png';
-
+import axios from 'axios';
 
 
   const statusOptions = [
@@ -24,47 +24,74 @@ import logo from './logo.png';
   ];
 
 
-  class BasicForm extends Component {
+    class BasicForm extends Component {
+      
+          constructor( props ) {
+            super( props );
+            this.state = {
+              pFirstName: '',
+              pLastName: '',
+              addressLine1: '',
+              addressLine2: '',
+              addressCity: '',
+              addressState: '',
+              addressZip: '',
+              phone: '',
+              email: '',
+              relationship: ''
+            };
+          }
+      
+          submitHandler(){
+            axios.post('Where we will post the thing', {
+              pFirstName: this.state.pFirstName,
+              pLastName: this.state.pLastName,
+              addressLine1: this.state.addressLine1,
+              addressLine2: this.state.addressLine2,
+              addressCity: this.state.addressCity,
+              addressState: this.state.addressState,
+              addressZip: this.state.addressZip,
+              phone: this.state.phone,
+              email: this.state.email,
+              relationship: this.state.relationship,
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          }
 
-    constructor( props ) {
-      super( props );
-      this.state = {};
-    }
 
     render() {
       return (
         <div><br/>
-          <Form onSubmit={submittedValues => this.setState( { submittedValues } )}>
-            { formApi => (
-              <form onSubmit={formApi.submitForm} id="form2">
-              <h2>Caregiver Information</h2><br/>
-                
-                <label htmlFor="pFirstName"></label>
-                <Text class = "text" field="pFirstName" id="pFirstName" placeholder = "First Name"/>
-                <label htmlFor="pLastName"></label>
-                <Text class = "text" field="pLastName" id="pLastName" placeholder = "Last Name"/><br/>
-                
-                <label htmlFor="addressLine1" ></label>
-                <Text class = "text" field="addressLine1" id="addressLine1" placeholder="Address Line 1"/>
+           <Form>
+              <form id="form2">
+              <br/><h2>Caregiver Information</h2><br/>
+                <label htmlFor="firstName"></label>
+                <Text className = "text" field="pFirstName" id="pFirstName" value={this.state.pFirstName} onChange={e => this.setState({pFirstName: e})} placeholder = "First Name"/>
+                <label htmlFor="lastName"></label>
+                <Text className = "text" field="pLastName" id="pLastName" value={this.state.pLastName} onChange={e => this.setState({pLastName: e})} placeholder = "Last Name"/><br/>
+                <label htmlFor="addressLine1"></label>
+                <Text className = "text" field="addressLine1" id="addressLine1" value={this.state.addressLine1} onChange={e => this.setState({addressLine1: e})} placeholder="Address Line 1"/>
                 <label htmlFor="addressLine2" ></label>
-                <Text class = "text" field="addressLine2" id="addressLine2" placeholder="Address Line 2"/>
+                <Text className = "text" field="addressLine2" id="addressLine2" value={this.state.addressLine2} onChange={e => this.setState({addressLine2: e})}placeholder="Address Line 2"/>
                 <label htmlFor="addressCity" ></label>
-                <Text class = "text" field="addressCity" id="addressCity" placeholder="City"/><br/>
+                <Text className = "text" field="addressCity" id="addressCity" value={this.state.addressCity} onChange={e => this.setState({addressCity: e})}placeholder="City"/><br/>
                 <label htmlFor="addressState" ></label>
-                <Text class = "text" field="addressState" id="addressState" placeholder="State"/>
+                <Text className = "text" field="addressState" id="addressState" value={this.state.addressState} onChange={e => this.setState({addressState: e})} placeholder="State"/>
                 <label htmlFor="addressZip" ></label>
-                <Text class = "text" field="addressZip" id="addressZip" placeholder="Zip Code"/><br/>
+                <Text className = "text" field="addressZip" id="addressZip" value={this.state.addressZip} onChange={e => this.setState({addressZip: e})} placeholder="Zip Code"/><br/>
                 <label htmlFor="phone"></label>
-                <Text class = "text" field="phone" id="phone" placeholder="Phone Number"/>
+                <Text className = "text" field="phone" id="phone" value={this.state.phone} onChange={e => this.setState({phone: e})} placeholder="Phone Number"/>
                 <label htmlFor="email"></label>
-                <Text class = "text" field="email" id="email" placeholder="Email"/><br/>
-                <label class = "text" htmlFor="relationship" className="d-block">Relationship to Child</label>
-                <Select  field="relationship" id="relationship" options={statusOptions} /><br/><br/>
-                <button type="submit" className="mb-4 btn btn-primary">Save</button>
-                <br/><br/>
-      
+                <Text className = "text" field="email" id="email" value={this.state.email} onChange={e => this.setState({email: e})} placeholder="Email"/><br/><br/>
+                <label htmlFor="relationship" className="d-block">Relationship to Child</label>
+                <Select field="relationship" id="relationship" options={statusOptions} value={this.state.relationship} onChange={e => this.setState({relationship: e})}/><br/><br/>
+                <button type="submit" onclick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
               </form>
-            )}
           </Form>
           
         </div>
