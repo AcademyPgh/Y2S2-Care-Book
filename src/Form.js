@@ -37,22 +37,22 @@ import logo from './logo.png';
               <form onSubmit={formApi.submitForm} id="form2">
                 <br/>
                 <label htmlFor="firstName">Name</label>
-                <Text class = "text" field="firstName" id="firstName" placeholder = "First"/>
+                <Text class = "text" field="pFirstName" id="pFirstName" placeholder = "First"/>
                 <label htmlFor="lastName"></label>
-                <Text class = "text" field="lastName" id="lastName" placeholder = "Last"/><br/><br/>
+                <Text class = "text" field="pLastName" id="pLastName" placeholder = "Last"/><br/><br/>
                 <label htmlFor="lastName">Address</label>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="Line 1" id="Line 1" placeholder="Line 1"/>
+                <Text class = "text" field="addressLine1" id="addressLine1" placeholder="Line 1"/>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="Line 2" id="Line 2" placeholder="Line 2"/>
+                <Text class = "text" field="addressLine2" id="addressLine2" placeholder="Line 2"/>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="City" id="City" placeholder="City"/>
+                <Text class = "text" field="addressCity" id="addressCity" placeholder="City"/><br/><br/>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="Country" id="Country" placeholder="Country"/>
+                <Text class = "text" field="addressState" id="addressState" placeholder="State"/>
                 <label htmlFor="lastName" ></label>
-                <Text class = "text" field="zipCode" id="zipCode" placeholder="Zip Code"/><br/><br/>
+                <Text class = "text" field="addressZip" id="addressZip" placeholder="Zip Code"/><br/><br/>
                 <label htmlFor="lastName">Phone Number</label>
-                <Text class = "text" field="phoneNumber" id="phoneNumber" /><br/><br/>
+                <Text class = "text" field="phone" id="phone" />
                 <label htmlFor="lastName">Email</label>
                 <Text class = "text" field="email" id="email" /><br/><br/>
                 <label htmlFor="status" className="d-block">Relationship to Child</label>
