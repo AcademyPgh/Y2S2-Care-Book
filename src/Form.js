@@ -55,8 +55,8 @@ import logo from './logo.png';
                 <Text class = "text" field="phone" id="phone" />
                 <label htmlFor="lastName">Email</label>
                 <Text class = "text" field="email" id="email" /><br/><br/>
-                <label htmlFor="status" className="d-block">Relationship to Child</label>
-                <Select field="status" id="status" options={statusOptions} /><br/><br/>
+                <label htmlFor="relationship" className="d-block">Relationship to Child</label>
+                <Select field="relationship" id="relationship" options={statusOptions} /><br/><br/>
                 <button type="submit" className="mb-4 btn btn-primary">Submit</button>
               </form>
             )}
