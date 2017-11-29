@@ -18,7 +18,19 @@ import Profile from './Profile_Data';
               relationship: ''
             };
           }
-      
+
+          componentDidMount(){
+            axios('http://localhost:3000/carebook')
+            .then(function(response){
+              this.setState(
+                response.data
+              )
+            }
+          ).catch(function (error) {
+              console.log(`initial request error: ${JSON.stringify(error)}`);
+            })
+          }
+
           submitHandler(){
             axios.post('Where we will post the thing', {
               firstName: this.state.firstName,
@@ -36,10 +48,9 @@ import Profile from './Profile_Data';
               console.log(response);
             })
             .catch(function (error) {
-              console.log(error);
+              console.log(`submit handler error: ${JSON.stringify(error)}`);
             });
           }
-
 
     render() {
       const caregiver = this.state.profile.caregiver;
@@ -78,9 +89,9 @@ import Profile from './Profile_Data';
                 <br/>
                 <button type="submit" onClick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
               </form>
-             
-          
-          
+
+
+
         </div>
 
       );
