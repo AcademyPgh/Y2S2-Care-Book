@@ -1,28 +1,8 @@
 import React, { Component } from 'react';
-import { Form, input, Radio, RadioGroup, Select, Checkbox, TextArea } from 'react-form';
-import logo from './logo.png';
 import axios from 'axios';
 import Profile from './Profile_Data';
-
-  const statusOptions = [
-    {
-      label: 'Parent',
-      value: 'parent'
-    },
-    {
-      label: 'Legal Guardian',
-      value: 'legalGuardian'
-    },
-    {
-      label: "Family",
-      value: 'family'
-    },
-    {
-      label: "Other",
-      value: 'other'
-    }
-  ];
-
+  
+ 
 
     class BasicForm extends Component {
       
@@ -67,9 +47,10 @@ import Profile from './Profile_Data';
 
     render() {
       const caregiver = this.state.profile.caregiver;
+      console.log(`phone: ${JSON.stringify(caregiver.phone)}`)
       return (
         <div><br/>
-           <Form>
+           
              
               <form id="form2">
               <br/><h2>Caregiver Information - {caregiver.firstName}</h2><br/>
@@ -88,15 +69,24 @@ import Profile from './Profile_Data';
                 <label htmlFor="addressZip" ></label>
                 <input className = "text" field="zip" id="zip" value={caregiver.addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].zip = e; this.setState({profile: tempProfile})}} placeholder="Zip Code"/><br/>
                 <label htmlFor="phone"></label>
-                <input className = "text" field="phone" id="phone" value={caregiver.phone} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phone = e; this.setState({profile: tempProfile})}} placeholder="Phone Number"/>
+                <input className = "text" field="phone" id="phone" value={caregiver.phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phone = e; this.setState({profile: tempProfile})}} placeholder="Phone Number"/>
                 <label htmlFor="email"></label>
                 <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e; this.setState({profile: tempProfile})}} placeholder="Email"/><br/><br/>
                 <label htmlFor="relationship" className="d-block">Relationship to Child</label>
-                <Select field="relationship" id="relationship" options={statusOptions} value={caregiver.relationship} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.relationship = e; this.setState({profile: tempProfile})}}/><br/><br/>
-                <button type="submit" onclick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
+
+                <label>
+                <select value={caregiver.relationship} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.relationship = e.target.value; this.setState({profile: tempProfile})}}>
+                  <option value="parent">Parent</option>
+                  <option value="legalGuardian">Legal Guardian</option>
+                  <option value="family">Family</option>
+                  <option value="other">Other</option>
+                </select>
+                </label>
+                <br/>
+                <button type="submit" onClick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
               </form>
              
-          </Form>
+          
           
         </div>
 

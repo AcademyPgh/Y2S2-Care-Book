@@ -1,34 +1,14 @@
 import React, { Component } from 'react';
-import { Form, Text, Radio, RadioGroup, Select, Checkbox, TextArea } from 'react-form';
-import logo from './logo.png';
-
-
-  const statusOptions2 = [
-    {
-      label: 'UPMC',
-      value: 'upmc'
-    },
-    {
-      label: 'Highmark',
-      value: 'highmark'
-    },
-    {
-      label: "Cigna",
-      value: 'cigna'
-    },
-    {
-      label: "Other",
-      value: 'other'
-    }
-  ];
+import Profile from './Profile_Data';
 
   class ChildForm extends Component {
 
     constructor( props ) {
       super( props );
       this.state = {
-        cFirstName: '',
-        cLastName: '',
+        profile: Profile,
+        firstName: '',
+        lastName: '',
         sex: '',
         birthdate: '',
         height: '',
@@ -41,105 +21,60 @@ import logo from './logo.png';
     }
 
     render() {
+      const child = this.state.profile.child;
       return (
         <div>
-          <Form onSubmit={submittedValues => this.setState( { submittedValues } )}>
-            { formApi => (
-              <form onSubmit={formApi.submitForm} id="form2">
+          <form onSubmit={submittedValues => this.setState( { submittedValues } )}>
 
                 <h2>Child Information</h2><br/>
-                <label htmlFor="cFirstName"></label>
-                <Text class = "text" field="cFirstName" id="cFirstName" placeholder = "First Name"/>
-                <label htmlFor="cLastName"></label>
-                <Text class = "text" field="cLastName" id="cLastName" placeholder = "Last Name"/><br/><br/>
-                <RadioGroup field="sex">
-              { group => (
-                <div>
-                  <label htmlFor="male" className="mr-2">Male</label>
-                  <Radio group={group} value="male" id="male" className="mr-3 d-inline-block" />
-                  <label htmlFor="female" className="mr-2">Female</label>
-                  <Radio group={group} value="female" id="female" className="d-inline-block" />
-                </div>
-              )}
-            </RadioGroup><br/>
+                <label htmlFor="firstName"></label>
+                <input className = "text" field="firstName" id="firstName" value ={child.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.firstName = e; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
+                <label htmlFor="lastName"></label>
+                <input className = "text" field="lastName" id="lastName" value={child.lastName} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.lastName = e; this.setState({profile: tempProfile})}}  placeholder = "Last Name"/><br/><br/>
+                
+                <label>
+                <label>Male</label>
+                <input type="radio" value={child.sex[0].male} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.sex[0].male = e; this.setState({profile: tempProfile})}}></input>
+                <label>Female</label>
+                <input type="radio" value={child.sex[0].female} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.sex[0].female = e; this.setState({profile: tempProfile})}}></input>
+                <label>Other</label>
+                <input type="radio" value={child.sex[0].other} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.sex[0].other = e; this.setState({profile: tempProfile})}}></input>
+                </label><br/><br/>
+              
                 
                 <label htmlFor="birthdate"></label>
-                <Text class = "text" field="birthdate" id="birthdate" placeholder="Birthdate: MM/DD/YYYY"/>
+                <input className = "text" field="birthdate" id="birthdate" placeholder="Birthdate: MM/DD/YYYY"value={child.birthdate} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.birthdate = e; this.setState({profile: tempProfile})}}/>
                 <label htmlFor="height" ></label>
-                <Text class = "text" field="height" id="height" placeholder ="Height: Inches"/>
+                <input className = "text" field="height" id="height" placeholder ="Height: Inches"value={child.height} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.height = e; this.setState({profile: tempProfile})}}/>
                 <label htmlFor="weight" ></label>
-                <Text class = "text" field="weight" id="weight" placeholder="Weight: Lbs."/><br/>
-                <label htmlFor="insurance" className="d-block"></label>
-                <Select field="insurance" id="insurance" options={statusOptions2} placeholder="Insurance"/>
-      
+                <input className = "text" field="weight" id="weight" placeholder="Weight: Lbs."value={child.weight} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.weight = e; this.setState({profile: tempProfile})}}/><br/><br/>
+                <label>Insurance</label>
+                <label>
+                <select value={child.insurance} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.insurance = e.target.value; this.setState({profile: tempProfile})}}>
+                  <option value="upmc">UPMC</option>
+                  <option value="highmark">Highmark</option>
+                  <option value="cigna">Cigna</option>
+                  <option value="other">Other</option>
+                </select>
+                </label>
               </form>
-            )}
-          </Form>
-          <Form
+              <br/>
+              <form
             onSubmit={submittedValues => this.setState( { submittedValues } )}>
-            { formApi => (
               <div>
-                
-                <form onSubmit={formApi.submitForm} id="dynamic-form"><br/>
                   <label htmlFor="dynamic-first"></label>
-                  <Text field="diagnosis" id="dynamic-first" placeholder="Diagnosis"/><br/><br/>
-                  
-                  { formApi.values.diagnoses && formApi.values.diagnoses.map( ( diagnosis, i ) => (
-                    <div key={`diagnosis${i}`}>
-                      <label htmlFor={`diagnosis-name-${i}`}></label>
-                      <Text field={['diagnoses', i]} id={`diagnosis-name-${i}`} placeholder="Diagnosis"/><br/><br/>
-                      <button
-                        onClick={() => formApi.removeValue('diagnoses', i)}
-                        type="button"
-                        className="mb-4 btn btn-danger">Remove</button>
-                       <br/><br/>
-                        
-                    </div>
-                  ))}
-                  <button
-                  onClick={() => formApi.addValue('diagnoses', '')}
-                  type="button" class = "text"
-                  className="mb-4 mr-4 btn btn-success">Add Diagnosis</button><br/><br/>
-                </form>
-              </div>
-            )}
-          </Form>
-          <Form
-            onSubmit={submittedValues => this.setState( { submittedValues } )}>
-            { formApi => (
-              <div>
-                
-                <form onSubmit={formApi.submitForm} id="dynamic-form"><br/>
+                  <input class="text" field="diagnosis" id="dynamic-first" placeholder="Diagnosis"/>
                   <label htmlFor="dynamic-first"></label>
-                  <Text field="allergy" id="dynamic-first" placeholder="Allergy"/><br/><br/>
+                  <input class= "text" field="allergy" id="dynamic-first" placeholder="Allergy"/><br/><br/>
                   
-                  { formApi.values.allergies && formApi.values.allergies.map( ( allergy, i ) => (
-                    <div key={`allergy${i}`}>
-                      <label htmlFor={`allergy-name-${i}`}></label>
-                      <Text field={['allergies', i]} id={`allergy-name-${i}`} placeholder="Allergy"/><br/><br/>
-                      <button
-                        onClick={() => formApi.removeValue('allergies', i)}
-                        type="button"
-                        className="mb-4 btn btn-danger">Remove</button>
-                        
-                        
-                    </div>
-                  ))}
                   
-                  <button
-                  onClick={() => formApi.addValue('allergies', '')}
-                  type="button"
-                  className="mb-4 mr-4 btn btn-success">Add Allergy</button><br/><br/>
                   <label htmlFor="history"></label>
-                  <Text class = "history" field="history" id="history" placeholder = "History"/><br/>
+                  <input className = "history" field="history" id="history" placeholder = "History"value={child.history} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.history = e; this.setState({profile: tempProfile})}}/><br/>
                   <button type="submit" className="mb-4 btn btn-primary">Save</button>
-
-                  
-                </form>
-                
+                          
               </div>
             )}
-          </Form>
+          </form>
         </div>
 
       );
