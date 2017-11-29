@@ -40,8 +40,7 @@ import Profile from './Profile_Data';
                 <label>Other</label>
                 <input type="radio" value={child.sex[0].other} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.sex[0].other = e; this.setState({profile: tempProfile})}}></input>
                 </label><br/><br/>
-              
-                
+
                 <label htmlFor="birthdate"></label>
                 <input className = "text" field="birthdate" id="birthdate" placeholder="Birthdate: MM/DD/YYYY"value={child.birthdate} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.birthdate = e; this.setState({profile: tempProfile})}}/>
                 <label htmlFor="height" ></label>
@@ -66,19 +65,13 @@ import Profile from './Profile_Data';
                   <input class="text" field="diagnosis" id="dynamic-first" placeholder="Diagnosis"/>
                   <label htmlFor="dynamic-first"></label>
                   <input class= "text" field="allergy" id="dynamic-first" placeholder="Allergy"/><br/><br/>
-                  
-                  
                   <label htmlFor="history"></label>
                   <input className = "history" field="history" id="history" placeholder = "History"value={child.history} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.history = e; this.setState({profile: tempProfile})}}/><br/>
-                  <button type="submit" className="mb-4 btn btn-primary">Save</button>
-                          
+                  <button type="submit" className="mb-4 btn btn-primary">Save</button>   
               </div>
-            
           </form>
         </div>
-
       );
     }
   }
-
   export default ChildForm;

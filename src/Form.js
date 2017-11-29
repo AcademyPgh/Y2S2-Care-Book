@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Profile from './Profile_Data';
-  
- 
-
-    class BasicForm extends Component {
-      
+  class BasicForm extends Component {      
           constructor( props ) {
             super( props );
             this.state = {
@@ -47,11 +43,8 @@ import Profile from './Profile_Data';
 
     render() {
       const caregiver = this.state.profile.caregiver;
-      console.log(`phone: ${JSON.stringify(caregiver.phone)}`)
       return (
         <div><br/>
-           
-             
               <form id="form2">
               <br/><h2>Caregiver Information - {caregiver.firstName}</h2><br/>
                 <label htmlFor="firstName"></label>

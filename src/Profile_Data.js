@@ -62,7 +62,17 @@ const Profile={
         label: "", 
         dose: "",
         frequency: "",
-        pharmacy: ""
+        pharmacy: [{
+            name: "",
+            addresses: [{
+                line1: "", 
+                line2: "", 
+                city: "", 
+                state: "", 
+                zip: ""
+            }],
+            phone: "",
+        }]
     }]
 }
 
