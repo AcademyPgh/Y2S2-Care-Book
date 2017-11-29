@@ -73,7 +73,7 @@ import Profile from './Profile_Data';
                   <button type="submit" className="mb-4 btn btn-primary">Save</button>
                           
               </div>
-            )}
+            
           </form>
         </div>
 
