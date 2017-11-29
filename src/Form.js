@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Text, Radio, RadioGroup, Select, Checkbox, TextArea } from 'react-form';
+import { Form, input, Radio, RadioGroup, Select, Checkbox, TextArea } from 'react-form';
 import logo from './logo.png';
 import axios from 'axios';
-
+import Profile from './Profile_Data';
 
   const statusOptions = [
     {
@@ -29,8 +29,9 @@ import axios from 'axios';
           constructor( props ) {
             super( props );
             this.state = {
-              pFirstName: '',
-              pLastName: '',
+              profile: Profile,
+              firstName: '',
+              lastName: '',
               addressLine1: '',
               addressLine2: '',
               addressCity: '',
@@ -44,8 +45,8 @@ import axios from 'axios';
       
           submitHandler(){
             axios.post('Where we will post the thing', {
-              pFirstName: this.state.pFirstName,
-              pLastName: this.state.pLastName,
+              firstName: this.state.firstName,
+              lastName: this.state.lastName,
               addressLine1: this.state.addressLine1,
               addressLine2: this.state.addressLine2,
               addressCity: this.state.addressCity,
@@ -65,33 +66,36 @@ import axios from 'axios';
 
 
     render() {
+      const caregiver = this.state.profile.caregiver;
       return (
         <div><br/>
            <Form>
+             
               <form id="form2">
-              <br/><h2>Caregiver Information</h2><br/>
+              <br/><h2>Caregiver Information - {caregiver.firstName}</h2><br/>
                 <label htmlFor="firstName"></label>
-                <Text className = "text" field="pFirstName" id="pFirstName" value={this.state.pFirstName} onChange={e => this.setState({pFirstName: e})} placeholder = "First Name"/>
+                <input className = "text" field="firstName" id="firstName" value ={caregiver.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.firstName = e; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                 <label htmlFor="lastName"></label>
-                <Text className = "text" field="pLastName" id="pLastName" value={this.state.pLastName} onChange={e => this.setState({pLastName: e})} placeholder = "Last Name"/><br/>
+                <input className = "text" field="lastName" id="lastName" value={caregiver.lastName} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.lastName = e; this.setState({profile: tempProfile})}}  placeholder = "Last Name"/><br/>
                 <label htmlFor="addressLine1"></label>
-                <Text className = "text" field="addressLine1" id="addressLine1" value={this.state.addressLine1} onChange={e => this.setState({addressLine1: e})} placeholder="Address Line 1"/>
+                <input className = "text" field="line1" id="line1" value={caregiver.addresses[0].line1} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].line1 = e; this.setState({profile: tempProfile})}}  placeholder="Address Line 1"/>
                 <label htmlFor="addressLine2" ></label>
-                <Text className = "text" field="addressLine2" id="addressLine2" value={this.state.addressLine2} onChange={e => this.setState({addressLine2: e})}placeholder="Address Line 2"/>
+                <input className = "text" field="line2" id="line2" value={caregiver.addresses[0].line2} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].line2 = e; this.setState({profile: tempProfile})}} placeholder="Address Line 2"/>
                 <label htmlFor="addressCity" ></label>
-                <Text className = "text" field="addressCity" id="addressCity" value={this.state.addressCity} onChange={e => this.setState({addressCity: e})}placeholder="City"/><br/>
+                <input className = "text" field="city" id="city" value={caregiver.addresses[0].city} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].city = e; this.setState({profile: tempProfile})}} placeholder="City"/><br/>
                 <label htmlFor="addressState" ></label>
-                <Text className = "text" field="addressState" id="addressState" value={this.state.addressState} onChange={e => this.setState({addressState: e})} placeholder="State"/>
+                <input className = "text" field="state" id="state" value={caregiver.addresses[0].state} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].state = e; this.setState({profile: tempProfile})}} placeholder="State"/>
                 <label htmlFor="addressZip" ></label>
-                <Text className = "text" field="addressZip" id="addressZip" value={this.state.addressZip} onChange={e => this.setState({addressZip: e})} placeholder="Zip Code"/><br/>
+                <input className = "text" field="zip" id="zip" value={caregiver.addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].zip = e; this.setState({profile: tempProfile})}} placeholder="Zip Code"/><br/>
                 <label htmlFor="phone"></label>
-                <Text className = "text" field="phone" id="phone" value={this.state.phone} onChange={e => this.setState({phone: e})} placeholder="Phone Number"/>
+                <input className = "text" field="phone" id="phone" value={caregiver.phone} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phone = e; this.setState({profile: tempProfile})}} placeholder="Phone Number"/>
                 <label htmlFor="email"></label>
-                <Text className = "text" field="email" id="email" value={this.state.email} onChange={e => this.setState({email: e})} placeholder="Email"/><br/><br/>
+                <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e; this.setState({profile: tempProfile})}} placeholder="Email"/><br/><br/>
                 <label htmlFor="relationship" className="d-block">Relationship to Child</label>
-                <Select field="relationship" id="relationship" options={statusOptions} value={this.state.relationship} onChange={e => this.setState({relationship: e})}/><br/><br/>
+                <Select field="relationship" id="relationship" options={statusOptions} value={caregiver.relationship} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.relationship = e; this.setState({profile: tempProfile})}}/><br/><br/>
                 <button type="submit" onclick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
               </form>
+             
           </Form>
           
         </div>

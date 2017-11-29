@@ -26,7 +26,18 @@ import logo from './logo.png';
 
     constructor( props ) {
       super( props );
-      this.state = {};
+      this.state = {
+        cFirstName: '',
+        cLastName: '',
+        sex: '',
+        birthdate: '',
+        height: '',
+        weight: '',
+        insurance: '',
+        diagnosis: '',
+        allergy: ''
+
+      };
     }
 
     render() {
@@ -114,12 +125,18 @@ import logo from './logo.png';
                         
                     </div>
                   ))}
+                  
                   <button
                   onClick={() => formApi.addValue('allergies', '')}
                   type="button"
                   className="mb-4 mr-4 btn btn-success">Add Allergy</button><br/><br/>
+                  <label htmlFor="history"></label>
+                  <Text class = "history" field="history" id="history" placeholder = "History"/><br/>
                   <button type="submit" className="mb-4 btn btn-primary">Save</button>
+
+                  
                 </form>
+                
               </div>
             )}
           </Form>

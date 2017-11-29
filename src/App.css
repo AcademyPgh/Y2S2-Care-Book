@@ -79,3 +79,11 @@ h1 {
   padding-bottom: 20px;
   
 }
+.history
+{
+  padding: 50px 50px;
+  margin: 8px 0;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 4px;
+  text-align: center;
+}
