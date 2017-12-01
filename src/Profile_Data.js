@@ -10,10 +10,10 @@ const Profile={
             state: "", 
             zip: ""
         }],
-        phone: {
+        phone: [{
             label: "",
             number: ""
-        },
+        }],
         email: '',
         relationship: ''
     },

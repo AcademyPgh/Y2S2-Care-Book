@@ -17,7 +17,13 @@ import Profile from './Profile_Data';
               email: '',
               relationship: ''
             };
+            this.handleAddPhone = this.handleAddPhone.bind(this);
           }
+
+          handleAddPhone() {
+            this.setState({ phone: this.state.profile.caregiver.phone.concat([{ label: '', number: '' }]) });
+          }  
+            //here's the button to add phone number        
 
           componentDidMount(){
             axios('http://localhost:3000/carebook')
@@ -52,12 +58,15 @@ import Profile from './Profile_Data';
             });
           }
 
+               
+    
+
     render() {
       const caregiver = this.state.profile.caregiver;
       return (
         <div><br/>
               <form id="form2">
-              <br/><h2>Caregiver Information - {caregiver.firstName}</h2><br/>
+              <br/><h2>Caregiver Information</h2><br/>
                 <label htmlFor="firstName"></label>
                 <input className = "text" field="firstName" id="firstName" value ={caregiver.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                 <label htmlFor="lastName"></label>
@@ -75,7 +84,8 @@ import Profile from './Profile_Data';
                 <label htmlFor="phone"></label>
                 <input className = "text" field="phone" id="phone" value={caregiver.phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phone = e.target.value; this.setState({profile: tempProfile})}} placeholder="Phone Number"/>
                 <label htmlFor="email"></label>
-                <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e.target.value; this.setState({profile: tempProfile})}} placeholder="Email"/><br/><br/>
+                <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e.target.value; this.setState({profile: tempProfile})}} placeholder="Email"/><br/>
+                <button type="button" onClick={this.handleAddPhone} className="small">Add Phone Numbers</button><br/><br/>
                 <label htmlFor="relationship" className="d-block">Relationship to Child</label>
 
                 <label>
@@ -86,7 +96,7 @@ import Profile from './Profile_Data';
                   <option value="other">Other</option>
                 </select>
                 </label>
-                <br/>
+                <br/><br/>
                 <button type="submit" onClick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
               </form>
 
