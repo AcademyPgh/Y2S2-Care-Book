@@ -26,9 +26,12 @@ class Medication extends Component {
 render() {
     const medication= this.state.profile.medication;
     return (
-      <div><br/>
+      
             <form id="form2">
+            <p className = "sectionTitle2">
             <br/><h2>Medications</h2><br/>
+            <input className = "openItInput" id="toggleMedication" type="checkbox"></input><label className = "openIt" for="toggleMedication"></label>
+                <div id="expandMedication">
             <label htmlFor="label"></label>
                 <input className = "text" field="label" id="label" value ={medication[0].label} onChange={e => {var tempProfile = this.state.profile; tempProfile.medication[0].label = e.target.value; this.setState({profile: tempProfile})}} placeholder = "Name of Medication"/>
             <label htmlFor="dose"></label>
@@ -47,8 +50,10 @@ render() {
                     <input className = "text" field="state" id="state" value={medication[0].pharmacy[0].addresses[0].state} onChange={e => {var tempProfile = this.state.profile; tempProfile.medication[0].pharmacy[0].addresses[0].state = e.target.value; this.setState({profile: tempProfile})}} placeholder="State"/>
                 <label htmlFor="addressZip" ></label>
                     <input className = "text" field="zip" id="zip" value={medication[0].pharmacy[0].addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.medication[0].pharmacy[0].addresses[0].zip = e.target.value; this.setState({profile: tempProfile})}} placeholder="Zip Code"/><br/>
+                    </div>
+                </p>
             </form>
-        </div>
+       
     )
 }
 }

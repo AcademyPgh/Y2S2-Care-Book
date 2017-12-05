@@ -31,9 +31,11 @@ class DoctorForm extends Component{
     render() {
         const doctors = this.state.profile.doctors;
         return (
-          <div><br/>
                 <form id="form2">
+                <p className = "sectionTitle">
                 <br/><h2>Physician Information</h2><br/>
+                <input className = "openItInput" id="toggleDoctor" type="checkbox"></input><label className = "openIt" for="toggleDoctor"></label>
+                <div id="expandDoctor">
                 <label htmlFor="firstName"></label>
                     <input className = "text" field="firstName" id="firstName" value ={doctors[0].firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.doctors[0].firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                 <label htmlFor="lastName"></label>
@@ -72,8 +74,10 @@ class DoctorForm extends Component{
                     <input className = "text" field="state" id="state" value={doctors[0].addresses[0].state} onChange={e => {var tempProfile = this.state.profile; tempProfile.doctors[0].addresses[0].state = e.target.value; this.setState({profile: tempProfile})}} placeholder="State"/>
                 <label htmlFor="addressZip" ></label>
                     <input className = "text" field="zip" id="zip" value={doctors[0].addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.doctors[0].addresses[0].zip = e.target.value; this.setState({profile: tempProfile})}} placeholder="Zip Code"/><br/>
-                </form>
+                
             </div>
+            </p>
+            </form>
         )
     }
 }

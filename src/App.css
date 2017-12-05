@@ -1,14 +1,9 @@
-.App {
-  padding: 10px;
-}
-
 .App-logo {
   height: 100px;
 
 }
-
 .App-header {
-  background-color: rgb(238, 225, 216);
+  background-color: rgb(254, 237, 217);
   height: 105px;
   padding: 20px;
   color: white;
@@ -44,12 +39,10 @@ button
 .button:hover {
   opacity: 0.8;
 }
-
 * {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
-
 .text
 {
   padding: 14px 20px;
@@ -57,19 +50,15 @@ button
   font-family: 'Open Sans', sans-serif;
   border-radius: 4px;
 } 
-
 body{
   font-family: 'Open Sans', sans-serif;
 }
-
 h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
   font-size: 20px;
   color: #0078ab;
 }
-
-
 h1 {
   text-align: left;
   font-size: 28px;
@@ -80,7 +69,6 @@ h1 {
   margin-top: 0;
   padding-top: 30px;
   padding-bottom: 20px;
-  
 }
 .history
 {
@@ -89,4 +77,73 @@ h1 {
   font-family: 'Open Sans', sans-serif;
   border-radius: 4px;
   text-align: center;
+}
+#toggleCaregiver:checked ~ #expandCaregiver {
+  height: auto;
+}
+#toggle:checked ~ label::before {
+  content: "-";
+}
+#expandCaregiver {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+#toggleChild:checked ~ #expandChild {
+  height: auto;
+}
+#expandChild {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+#toggleDoctor:checked ~ #expandDoctor {
+  height: auto;
+}
+#expandDoctor {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+#toggleMedication:checked ~ #expandMedication {
+  height: auto;
+}
+#expandMedication {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+.openItInput {
+  display: none;
+  visibility: hidden;
+}
+.openIt {
+  display: block;
+  padding: 0.5em;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+  color: #666;
+}
+.openIt:hover {
+  color: #000;
+}
+.openIt::before {
+  font-family: Consolas, monaco, monospace;
+  font-weight: bold;
+  font-size: 15px;
+  content: "+";
+  vertical-align: text-top;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+  background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
+}
+.sectionTitle
+{
+  background-color: rgb(205, 234, 243);
+}
+.sectionTitle2
+{
+  background-color: rgb(169, 226, 241);
 }
