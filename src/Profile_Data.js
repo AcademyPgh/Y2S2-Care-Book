@@ -78,6 +78,6 @@ const Profile={
             phone: "",
         }]
     }]
-}
+};
 
 export default Profile;

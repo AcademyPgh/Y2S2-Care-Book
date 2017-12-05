@@ -7,16 +7,16 @@ import DoctorForm from './Doctors';
 import Medication from './Medication';
 
 class App extends Component {
-  render() {
-    return (
-      <div className = "App">
-      <Header/>
-      <Form/>
-      <ChildForm/>
-      <DoctorForm/>
-      <Medication/>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className = "App">
+                <Header/>
+                <Form/>
+                <ChildForm/>
+                <DoctorForm/>
+                <Medication/>
+            </div>
+        );
+    }
 }
 export default App;
