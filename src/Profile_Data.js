@@ -1,7 +1,7 @@
 const Profile={
     caregiver: {
-        firstName: "Kylen",
-        lastName: "Tennies",
+        firstName: "",
+        lastName: "",
         addresses: [{
             label: "",
             line1: "", 
@@ -10,7 +10,7 @@ const Profile={
             state: "", 
             zip: ""
         }],
-        phone: [{
+        phones: [{
             label: "",
             number: ""
         }],
@@ -25,7 +25,9 @@ const Profile={
         height: "",
         weight: "",
         insurance: "",
-        diagnoses: [],
+        diagnoses: [{
+            diagnosis: ""
+        }],
         allergies: [],
         history: ""
     },

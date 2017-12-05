@@ -13,17 +13,29 @@ import Profile from './Profile_Data';
               addressCity: '',
               addressState: '',
               addressZip: '',
-              phone: '',
+              phones: [],
               email: '',
               relationship: ''
             };
             this.handleAddPhone = this.handleAddPhone.bind(this);
+            this.handleDeletePhone = this.handleDeletePhone.bind(this);
           }
 
-          handleAddPhone() {
-            this.setState({ phone: this.state.profile.caregiver.phone.concat([{ label: '', number: '' }]) });
-          }  
-            //here's the button to add phone number        
+          handleAddPhone() { //this adds a phone number box
+            var tempProfile = this.state.profile;
+            tempProfile.caregiver.phones.push({label: '', number: ''}) ;
+            this.setState({profile: tempProfile});
+          }      
+
+          handleDeletePhone(idx) { //this deletes a phone number box
+            var hi = this.state.profile;
+            if (idx > 0)
+            {
+            hi.caregiver.phones.splice(idx, 1);
+            this.setState({profile: hi});
+            }
+            
+          }   
 
           componentDidMount(){
             axios('http://localhost:3000/carebook')
@@ -58,9 +70,6 @@ import Profile from './Profile_Data';
             });
           }
 
-               
-    
-
     render() {
       const caregiver = this.state.profile.caregiver;
       return (
@@ -80,12 +89,23 @@ import Profile from './Profile_Data';
                 <label htmlFor="addressState" ></label>
                 <input className = "text" field="state" id="state" value={caregiver.addresses[0].state} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].state = e.target.value; this.setState({profile: tempProfile})}} placeholder="State"/>
                 <label htmlFor="addressZip" ></label>
-                <input className = "text" field="zip" id="zip" value={caregiver.addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].zip = e.target.value; this.setState({profile: tempProfile})}} placeholder="Zip Code"/><br/>
-                <label htmlFor="phone"></label>
-                <input className = "text" field="phone" id="phone" value={caregiver.phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phone = e.target.value; this.setState({profile: tempProfile})}} placeholder="Phone Number"/>
+                <input className = "text" field="zip" id="zip" value={caregiver.addresses[0].zip} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.addresses[0].zip = e.target.value; this.setState({profile: tempProfile})}} placeholder="Zip Code"/>
                 <label htmlFor="email"></label>
-                <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e.target.value; this.setState({profile: tempProfile})}} placeholder="Email"/><br/>
-                <button type="button" onClick={this.handleAddPhone} className="small">Add Phone Numbers</button><br/><br/>
+                <input className = "text" field="email" id="email" value={caregiver.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.email = e.target.value; this.setState({profile: tempProfile})}} placeholder="Email"/>
+              {caregiver.phones.map((phone, idx) => {
+                var btn = '';
+                if(idx>0){
+                  btn = <button type="button" onClick={() => {this.handleDeletePhone(idx)}} className="small">Delete</button>;
+                }
+                return (<div> 
+                  <label htmlFor="phone"></label>
+                  <input className = "text" field="phone" id="phone" value={phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phones[idx].number = e.target.value; this.setState({profile: tempProfile})}} placeholder={`Phone Number # ${idx + 1}`}/>
+                  {btn}<br/>
+                </div>);
+              })}
+              <button type="button" onClick={this.handleAddPhone} className="small">Add Phone Numbers</button><br/>
+                
+                
                 <label htmlFor="relationship" className="d-block">Relationship to Child</label>
 
                 <label>

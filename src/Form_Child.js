@@ -7,17 +7,24 @@ import Profile from './Profile_Data';
       super( props );
       this.state = {
         profile: Profile,
-        firstName: '',
-        lastName: '',
-        sex: '',
-        birthdate: '',
-        height: '',
-        weight: '',
-        insurance: '',
-        diagnosis: '',
-        allergy: ''
-
       };
+      this.handleAddDiagnosis = this.handleAddDiagnosis.bind(this);
+      this.handleDeleteDiagnosis = this.handleDeleteDiagnosis.bind(this);
+    }
+
+    handleAddDiagnosis(){
+      var tempProfile = this.state.profile;
+      tempProfile.child.diagnoses.push({diagnosis: ''});
+      this.setState({profile: tempProfile});
+    }
+
+    handleDeleteDiagnosis(idx){
+      var tempProfile = this.state.profile;
+      if (idx > 0)
+      {
+      tempProfile.child.diagnoses.splice(idx, 1);
+      this.setState({profile: tempProfile});
+      }
     }
 
     render() {
@@ -56,15 +63,25 @@ import Profile from './Profile_Data';
                   <option value="other">Other</option>
                 </select>
                 </label>
-              </form>
               <br/>
-              <form
-            onSubmit={submittedValues => this.setState( { submittedValues } )}>
               <div>
-                  <label htmlFor="dynamic-first"></label>
-                  <input class="text" field="diagnosis" id="dynamic-first" placeholder="Diagnosis"/>
-                  <label htmlFor="dynamic-first"></label>
-                  <input class= "text" field="allergy" id="dynamic-first" placeholder="Allergy"/><br/><br/>
+                  
+                {child.diagnoses.map((diagnosis, idx) => {
+                  var btn = '';
+                  if(idx>0){
+                    btn= <button type="button" onClick={() => {this.handleDeleteDiagnosis(idx)}} className="small">Delete</button>;
+                  }
+                  return (
+                  <div>
+                    <label htmlFor="dynamic-first"></label>
+                    <input class="text" field="diagnosis" id="dynamic-first" placeholder = {'Diagnosis #' + (idx+1)} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.diagnoses[idx].diagnosis = e.target.value; this.setState({profile: tempProfile})} }/>
+                    {btn}<br/>
+                  </div>);
+                })}
+                <button type="button" onClick={this.handleAddDiagnosis} className="small">Add Diagnosis</button><br/>
+
+                  <label htmlFor="dynamic-first"></label> 
+                  <input class= "text" field="allergy" id="dynamic-first" placeholder = "Allergy" onChange={e => {var tempProfile = this.state.profile; tempProfile.child.allergies[0] = e.target.value; this.setState({profile: tempProfile})} }/><br/><br/>
                   <label htmlFor="history"></label>
                   <input className = "history" field="history" id="history" placeholder = "History"value={child.history} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.history = e.target.value; this.setState({profile: tempProfile})}}/><br/>
                   <button type="submit" className="mb-4 btn btn-primary">Save</button>   
