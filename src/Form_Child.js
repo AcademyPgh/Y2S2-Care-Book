@@ -32,8 +32,8 @@ import Profile from './Profile_Data';
       return (
           <form onSubmit={submittedValues => this.setState( { submittedValues } )}>
           <p className = "sectionTitle2">
-              <br/><h2>Child Information</h2>
               <input className = "openItInput" id="toggleChild" type="checkbox"></input><label className = "openIt" for="toggleChild"></label>
+              <h2>Child Information</h2>
                 <div id="expandChild"><br/>
                 <label htmlFor="firstName"></label>
                 <input className = "text" field="firstName" id="firstName" value ={child.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>

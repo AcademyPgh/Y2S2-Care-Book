@@ -28,9 +28,9 @@ render() {
     return (
       
             <form id="form2">
-            <p className = "sectionTitle2">
-            <br/><h2>Medications</h2><br/>
+            <p className = "sectionTitle">
             <input className = "openItInput" id="toggleMedication" type="checkbox"></input><label className = "openIt" for="toggleMedication"></label>
+            <h2>Medications</h2>
                 <div id="expandMedication">
             <label htmlFor="label"></label>
                 <input className = "text" field="label" id="label" value ={medication[0].label} onChange={e => {var tempProfile = this.state.profile; tempProfile.medication[0].label = e.target.value; this.setState({profile: tempProfile})}} placeholder = "Name of Medication"/>

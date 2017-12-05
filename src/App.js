@@ -16,8 +16,8 @@ class App extends Component {
       <Form/>
       <ChildForm/>
       <DoctorForm/>
-      <Medication/>
       <Pharmacy/>
+      <Medication/>
       </div>
     );
   }

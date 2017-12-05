@@ -58,6 +58,10 @@ h2 {
   font-weight: 200;
   font-size: 20px;
   color: #0078ab;
+  padding-top: 10px;
+  display: inline-block;
+  position: relative;
+  top: 12px;
 }
 h1 {
   text-align: left;
@@ -126,10 +130,10 @@ h1 {
   visibility: hidden;
 }
 .openIt {
-  display: block;
+  display: inline-block;
   padding: 0.5em;
   text-align: center;
-  border-bottom: 1px solid #CCC;
+  position: relative;
   color: #666;
 }
 .openIt:hover {
@@ -144,8 +148,8 @@ h1 {
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 3px;
   background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
+  padding: 10px;
 }
 .sectionTitle
 {

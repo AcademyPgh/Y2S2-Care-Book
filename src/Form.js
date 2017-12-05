@@ -75,9 +75,9 @@ import Profile from './Profile_Data';
       return (
               <form id="form2">
               <p className = "sectionTitle">
-              <br/><h2>Caregiver Information</h2>
-              <input className = "openItInput" id="toggleCaregiver" type="checkbox"></input><label className = "openIt" for="toggleCaregiver"></label>
               
+              <input className = "openItInput" id="toggleCaregiver" type="checkbox"></input><label className = "openIt" for="toggleCaregiver"></label>
+              <h2>Caregiver Information</h2>
               <div id="expandCaregiver">
                 <label htmlFor="firstName"></label>
                 <input className = "text" field="firstName" id="firstName" value ={caregiver.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>

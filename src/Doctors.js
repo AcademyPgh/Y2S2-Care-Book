@@ -87,8 +87,8 @@ class DoctorForm extends Component{
         return (
                 <form id="form2">
                 <p className = "sectionTitle">
-                    <br/><h2>Physician Information</h2><br/>     
                     <input className = "openItInput" id="toggleDoctor" type="checkbox"></input><label className = "openIt" for="toggleDoctor"></label>           
+                    <h2>Physician Information</h2>   
                     <div id="expandDoctor">
                     {doctors.map((doctor, drIndex) => {
                         var btnP = '';
