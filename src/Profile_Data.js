@@ -35,7 +35,7 @@ const Profile={
         label: "",
         firstName: "Andrew",
         lastName: "Yeung",
-        phone: [{
+        phones: [{
             label: "",
             number: ""
         }],
@@ -64,17 +64,17 @@ const Profile={
         label: "", 
         dose: "",
         frequency: "",
-        pharmacy: [{
-            name: "",
-            addresses: [{
-                line1: "", 
-                line2: "", 
-                city: "", 
-                state: "", 
-                zip: ""
-            }],
-            phone: "",
-        }]
+        // pharmacy: [{
+        //     name: "",
+        //     addresses: [{
+        //         line1: "", 
+        //         line2: "", 
+        //         city: "", 
+        //         state: "", 
+        //         zip: ""
+        //     }],
+        //     phone: "",
+        // }]
     }]
 }
 

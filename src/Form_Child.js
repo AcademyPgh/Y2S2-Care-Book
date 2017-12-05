@@ -30,7 +30,6 @@ import Profile from './Profile_Data';
     render() {
       const child = this.state.profile.child;
       return (
-        
           <form onSubmit={submittedValues => this.setState( { submittedValues } )}>
           <p className = "sectionTitle2">
               <br/><h2>Child Information</h2>

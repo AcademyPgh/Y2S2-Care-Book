@@ -113,6 +113,14 @@ h1 {
   overflow: hidden;
   transition: height 0.5s;
 }
+#togglePharm:checked ~ #expandPharm {
+  height: auto;
+}
+#expandPharm {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
 .openItInput {
   display: none;
   visibility: hidden;
