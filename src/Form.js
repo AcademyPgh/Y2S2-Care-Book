@@ -6,16 +6,16 @@ import Profile from './Profile_Data';
             super( props );
             this.state = {
               profile: Profile,
-              firstName: '',
-              lastName: '',
-              addressLine1: '',
-              addressLine2: '',
-              addressCity: '',
-              addressState: '',
-              addressZip: '',
-              phones: [],
-              email: '',
-              relationship: ''
+              // firstName: '',
+              // lastName: '',
+              // addressLine1: '',
+              // addressLine2: '',
+              // addressCity: '',
+              // addressState: '',
+              // addressZip: '',
+              // phones: [],
+              // email: '',
+              // relationship: ''
             };
             this.handleAddPhone = this.handleAddPhone.bind(this);
             this.handleDeletePhone = this.handleDeletePhone.bind(this);
@@ -29,10 +29,9 @@ import Profile from './Profile_Data';
 
           handleDeletePhone(idx) { //this deletes a phone number box
             var hi = this.state.profile;
-            if (idx > 0)
-            {
-            hi.caregiver.phones.splice(idx, 1);
-            this.setState({profile: hi});
+            if (idx > 0) {
+              hi.caregiver.phones.splice(idx, 1);
+              this.setState({profile: hi});
             }
             
           }   
@@ -98,7 +97,6 @@ import Profile from './Profile_Data';
                   btn = <button type="button" onClick={() => {this.handleDeletePhone(idx)}} className="small">Delete</button>;
                 }
                 return (<div> 
-                  <label htmlFor="phone"></label>
                   <input className = "text" field="phone" id="phone" value={phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phones[idx].number = e.target.value; this.setState({profile: tempProfile})}} placeholder={`Phone Number # ${idx + 1}`}/>
                   {btn}<br/>
                 </div>);
