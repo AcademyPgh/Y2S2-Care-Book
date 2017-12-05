@@ -61,9 +61,9 @@ const Profile={
         phone: "",
     }],
     medication: [{
-        label: "", 
+        medicationName: "", 
         dose: "",
-        frequency: "",
+        frequency: ""
         // pharmacy: [{
         //     name: "",
         //     addresses: [{
