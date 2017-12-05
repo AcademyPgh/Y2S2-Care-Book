@@ -30,10 +30,11 @@ import Profile from './Profile_Data';
     render() {
       const child = this.state.profile.child;
       return (
-        <div>
           <form onSubmit={submittedValues => this.setState( { submittedValues } )}>
-
-                <h2>Child Information</h2><br/>
+          <p className = "sectionTitle2">
+              <input className = "openItInput" id="toggleChild" type="checkbox"></input><label className = "openIt" for="toggleChild"></label>
+              <h2>Child Information</h2>
+                <div id="expandChild"><br/>
                 <label htmlFor="firstName"></label>
                 <input className = "text" field="firstName" id="firstName" value ={child.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                 <label htmlFor="lastName"></label>
@@ -86,9 +87,10 @@ import Profile from './Profile_Data';
                   <input className = "history" field="history" id="history" placeholder = "History"value={child.history} onChange={e => {var tempProfile = this.state.profile; tempProfile.child.history = e.target.value; this.setState({profile: tempProfile})}}/><br/>
                   <button type="submit" className="mb-4 btn btn-primary">Save</button>   
               </div>
+              </div>
+              </p>
           </form>
-        </div>
-      );
+    );
     }
   }
   export default ChildForm;

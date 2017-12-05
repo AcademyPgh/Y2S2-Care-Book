@@ -72,9 +72,12 @@ import Profile from './Profile_Data';
     render() {
       const caregiver = this.state.profile.caregiver;
       return (
-        <div><br/>
               <form id="form2">
-              <br/><h2>Caregiver Information</h2><br/>
+              <p className = "sectionTitle">
+              
+              <input className = "openItInput" id="toggleCaregiver" type="checkbox"></input><label className = "openIt" for="toggleCaregiver"></label>
+              <h2>Caregiver Information</h2>
+              <div id="expandCaregiver">
                 <label htmlFor="firstName"></label>
                 <input className = "text" field="firstName" id="firstName" value ={caregiver.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                 <label htmlFor="lastName"></label>
@@ -96,10 +99,14 @@ import Profile from './Profile_Data';
                 if(idx>0){
                   btn = <button type="button" onClick={() => {this.handleDeletePhone(idx)}} className="small">Delete</button>;
                 }
-                return (<div> 
+
+                return (
+                <p> 
+                  <label htmlFor="phone"></label>
+
                   <input className = "text" field="phone" id="phone" value={phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phones[idx].number = e.target.value; this.setState({profile: tempProfile})}} placeholder={`Phone Number # ${idx + 1}`}/>
                   {btn}<br/>
-                </div>);
+                </p>);
               })}
               <button type="button" onClick={this.handleAddPhone} className="small">Add Phone Numbers</button><br/>
                 
@@ -116,12 +123,9 @@ import Profile from './Profile_Data';
                 </label>
                 <br/><br/>
                 <button type="submit" onClick={this.submitHandler} className="mb-4 btn btn-primary">Save</button><br/><br/>
-              </form>
-
-
-
-        </div>
-
+              </div>
+              </p>
+          </form>
       );
     }
   }
