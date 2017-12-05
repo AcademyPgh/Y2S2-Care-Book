@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Page from './Page';
 import Form from './Form';
 import Header from './Header';
 import ChildForm from './Form_Child';
@@ -20,5 +19,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
