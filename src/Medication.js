@@ -68,15 +68,15 @@ render() {
             <h2>Medications</h2>
                 <div id="expandMedication">
                     <label htmlFor="label"></label>
-                    <input className = "text" field="label" id="label" value ={medication[0].label} onChange={(e) => {
+                    <input className = "text" field="label" id="label" value ={medications[0].label} onChange={(e) => {
                         const tempProfile = this.state.profile; tempProfile.medication[0].label = e.target.value; this.setState({profile: tempProfile});
                     }} placeholder = "Name of Medication"/>
                     <label htmlFor="dose"></label>
-                    <input className = "text" field="dose" id="dose" value={medication[0].dose} onChange={(e) => {
+                    <input className = "text" field="dose" id="dose" value={medications[0].dose} onChange={(e) => {
                         const tempProfile = this.state.profile; tempProfile.medication[0].dose = e.target.value; this.setState({profile: tempProfile});
                     }} placeholder = "Dose"/>
                     <label htmlFor="frequency"></label>
-                    <input className = "text" field="frequency" id="frequency" value ={medication[0].frequency} onChange={(e) => {
+                    <input className = "text" field="frequency" id="frequency" value ={medications[0].frequency} onChange={(e) => {
                         const tempProfile = this.state.profile; tempProfile.medication[0].frequency = e.target.value; this.setState({profile: tempProfile});
                     }} placeholder = "Frequency"/><br/>
                     <label htmlFor="name"></label>
