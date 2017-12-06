@@ -17,13 +17,14 @@ class BasicForm extends Component{
         this.setState({profile: tempProfile});
     }      
 
-    handleDeletePhone(idx){ //this deletes a phone box
-        const hi = this.state.profile;
-        if (idx > 0){
-            hi.caregiver.phones.splice(idx, 1);
-            this.setState({profile: hi});
-        }
-    }   
+          handleDeletePhone(idx) { //this deletes a phone number box
+            var hi = this.state.profile;
+            if (idx > 0) {
+              hi.caregiver.phones.splice(idx, 1);
+              this.setState({profile: hi});
+            }
+            
+          }   
 
     componentDidMount(){
         axios('http://localhost:3000/carebook')
@@ -86,9 +87,11 @@ class BasicForm extends Component{
                 if(idx>0){
                   btn = <button type="button" onClick={() => {this.handleDeletePhone(idx)}} className="small">Delete</button>;
                 }
+
                 return (
                 <p> 
                   <label htmlFor="phone"></label>
+
                   <input className = "text" field="phone" id="phone" value={phone.number} onChange={e => {var tempProfile = this.state.profile; tempProfile.caregiver.phones[idx].number = e.target.value; this.setState({profile: tempProfile})}} placeholder={`Phone Number # ${idx + 1}`}/>
                   {btn}<br/>
                 </p>);

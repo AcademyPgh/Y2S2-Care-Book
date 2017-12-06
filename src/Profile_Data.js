@@ -63,7 +63,7 @@ const Profile={
         phone: "",
     }],
     medication: [{
-        label: "", 
+        medicationName: "", 
         dose: "",
         frequency: ""
         // pharmacy: [{

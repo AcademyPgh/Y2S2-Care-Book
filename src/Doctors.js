@@ -15,16 +15,17 @@ class DoctorForm extends Component{
         this.handleDeleteDoctor = this.handleDeleteDoctor.bind(this);
       }
 
-    handleAddPhone(drIndex) { //this adds a phone number box
-        return() => {
-        var tempProfile = this.state.profile;
-        tempProfile.doctors[drIndex].phones.push({label: '', number: ''}) ;
-        this.setState({profile: tempProfile});
+    handleAddPhone(drIndex) { //this adds a phone number
+        return () =>{
+            var tempProfile = this.state.profile;
+            tempProfile.doctors[drIndex].phones.push({label: '', number: ''}) ;
+            this.setState({profile: tempProfile});
         }
     }      
 
-    handleDeletePhone(phoneIndex,drIndex) { //this deletes a phone number box
-        var temp = this.state.profile;
+    handleDeletePhone(phoneIndex,drIndex) { //this deletes a phone number
+        var temp = this.state.profile;            
+         
         if (phoneIndex > 0)
         {
         temp.doctors[drIndex].phones.splice(phoneIndex, 1);
@@ -32,8 +33,8 @@ class DoctorForm extends Component{
         }
     }
 
-    handleAddAddress(drIndex) { //this adds an address box
-        return() => {
+    handleAddAddress(drIndex) { //this adds an address
+        return () =>{
         var tempProfile = this.state.profile;
         tempProfile.doctors[drIndex].addresses.push({label: "",
         line1: "", 
@@ -45,7 +46,7 @@ class DoctorForm extends Component{
         }
     }      
 
-    handleDeleteAddress(addressIndex,drIndex) { //this deletes an address box
+    handleDeleteAddress(addressIndex,drIndex) { //this deletes an address
         var temp = this.state.profile;
         if (addressIndex > 0)
         {
@@ -85,8 +86,9 @@ class DoctorForm extends Component{
         this.setState({profile: temp});
         }
     }
+
     render() {
-        const doctors = this.state.profile.doctors;
+        const doctors = this.state.profile.doctors;                        
         return (
                 <form id="form2">
                 <p className = "sectionTitle">
@@ -96,10 +98,10 @@ class DoctorForm extends Component{
                     {doctors.map((doctor, drIndex) => {
                         var btnP = '';
                         if(drIndex>0){
-                        btnP = <button type="button" onClick={() => {this.handleDeleteDoctor(drIndex)}} className="small">Delete Doctor</button>;
+                        btnP = <button type="button" onClick={() => {this.handleDeleteDoctor(drIndex)}} className="small">Delete Physician</button>;
                         }
                         return (<div> 
-                            <h3>Physician {drIndex+1} </h3>
+                            <h3>Physician {drIndex+1} {btnP}</h3> 
                             <label htmlFor="firstName"></label>
                                 <input className = "text" field="firstName" id="firstName" value ={doctor.firstName} onChange={e => {var tempProfile = this.state.profile; tempProfile.doctors[drIndex].firstName = e.target.value; this.setState({profile: tempProfile})}} placeholder = "First Name"/>
                             <label htmlFor="lastName"></label>
@@ -112,7 +114,7 @@ class DoctorForm extends Component{
                             </label><br/>
                             <label htmlFor="email"></label>
                             <input className = "text" field="email" id="email" value={doctor.email} onChange={e => {var tempProfile = this.state.profile; tempProfile.doctors[drIndex].email = e.target.value; this.setState({profile: tempProfile})}} placeholder="Email"/>
-                            {doctors[drIndex].phones.map((phone, phoneIndex) => {
+                            {doctor.phones.map((phone, phoneIndex) => {
                                 var btn = '';
                                 if(phoneIndex>0){
                                 btn = <button type="button" onClick={() => {this.handleDeletePhone(phoneIndex, drIndex)}} className="small">Delete</button>;
