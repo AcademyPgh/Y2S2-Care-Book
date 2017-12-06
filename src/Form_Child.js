@@ -44,12 +44,15 @@ class ChildForm extends Component{
     render(){
         const child = this.state.profile.child;
         return(
-            <div>
                 <form 
                     onSubmit={
                         (submittedValues) => this.setState({ submittedValues })
                     }
                 >
+                <p className="sectionTitle2" >
+                <input className = "openItInput" id="toggleChild" type="checkbox"></input><label className = "openIt" for="toggleChild"></label>
+              <h2>Child Information</h2>
+                <div id="expandChild"><br/>
                     <h2>
               Child Information
                     </h2>
@@ -295,8 +298,10 @@ class ChildForm extends Component{
                 Save
                         </button>   
                     </div>
+                    </div>
+                    </p>
                 </form>
-            </div>
+
         );
     }
 }

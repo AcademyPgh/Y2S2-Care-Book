@@ -35,9 +35,9 @@ const Profile={
     },
     doctors: [{
         label: "",
-        firstName: "Andrew",
-        lastName: "Yeung",
-        phone: [{
+        firstName: "",
+        lastName: "",
+        phones: [{
             label: "",
             number: ""
         }],
@@ -65,18 +65,18 @@ const Profile={
     medication: [{
         label: "", 
         dose: "",
-        frequency: "",
-        pharmacy: [{
-            name: "",
-            addresses: [{
-                line1: "", 
-                line2: "", 
-                city: "", 
-                state: "", 
-                zip: ""
-            }],
-            phone: "",
-        }]
+        frequency: ""
+        // pharmacy: [{
+        //     name: "",
+        //     addresses: [{
+        //         line1: "", 
+        //         line2: "", 
+        //         city: "", 
+        //         state: "", 
+        //         zip: ""
+        //     }],
+        //     phone: "",
+        // }]
     }]
 };
 
