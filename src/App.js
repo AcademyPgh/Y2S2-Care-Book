@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import Form from './Form';
-import Header from './Header';
-import ChildForm from './Form_Child';
-import DoctorForm from './Doctors';
-import Medication from './Medication';
-import Pharmacy from './Pharmacy';
+import './style/App.css';
+import Form from './components/Form';
+import Header from './components/Header';
+import ChildForm from './components/Form_Child';
+import DoctorForm from './components/Doctors';
+import Medication from './components/Medication';
+import Pharmacy from './components/Pharmacy';
 
 class App extends Component {
     render() {
