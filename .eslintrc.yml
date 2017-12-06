@@ -1,0 +1,275 @@
+# info about availble rules: https://eslint.org/docs/rules/
+env:
+  browser: true
+  es6: true
+  node: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+  - react
+globals:
+  _: false # don't report lodash "_" as undefined
+rules:
+  indent:
+    - warn
+    - 4
+  linebreak-style:
+    - warn
+    - unix
+  semi:
+    - error
+    - always
+  no-console:
+    - warn
+  for-direction:
+    - error
+  no-cond-assign:
+    - error
+  no-control-regex:
+    - error
+  no-dupe-args:
+    - error
+  no-compare-neg-zero:
+    - error
+  no-dupe-keys:
+    - error
+  no-empty-character-class:
+    - error
+  no-ex-assign:
+    - error
+  no-extra-boolean-cast:
+    - error
+  no-extra-parens:
+    - error
+  no-extra-semi:
+    - error
+  no-func-assign:
+    - error
+  no-inner-declarations:
+    - error
+  no-invalid-regexp:
+    - error
+  no-obj-calls:
+    - error
+  no-regex-spaces:
+    - error
+  no-sparse-arrays:
+    - error
+  no-template-curly-in-string:
+    - error
+  no-unexpected-multiline:
+    - error
+  no-unreachable:
+    - error
+  no-unsafe-negation:
+    - error
+  use-isnan:
+    - error
+  valid-typeof:
+    - error
+  block-scoped-var:
+    - error
+  complexity:
+    - warn
+  consistent-return:
+    - error
+  curly:
+    - error
+  dot-notation:
+    - error
+  eqeqeq:
+    - error
+  no-caller:
+    - error
+  no-div-regex:
+    - error
+  no-else-return:
+    - error
+  no-empty-function:
+    - error
+  no-empty-pattern:
+    - error
+  no-extend-native:
+    - error
+  no-extra-bind:
+    - error
+  no-floating-decimal:
+    - error
+  no-global-assign:
+    - error
+  no-implicit-coercion:
+    - error
+  no-implicit-globals:
+    - error
+  no-implied-eval:
+    - error
+  no-invalid-this:
+    - error
+  no-lone-blocks:
+    - error
+  no-loop-func:
+    - error
+  no-magic-numbers:
+    - warn
+  no-multi-spaces:
+    - error
+    - ignoreEOLComments: true
+  no-new-func:
+    - error
+  no-new-wrappers:
+    - error
+  no-octal:
+    - error
+  no-octal-escape:
+    - error
+  no-param-reassign:
+    - error
+  no-redeclare:
+    - error
+  no-restricted-properties:
+    - error
+  no-return-assign:
+    - error
+  no-return-await:
+    - error
+  no-self-assign:
+    - error
+  no-self-compare:
+    - error
+  no-throw-literal:
+    - error
+  no-unmodified-loop-condition:
+    - error
+  no-unused-expressions:
+    - error
+  no-unused-labels:
+    - error
+  no-useless-call:
+    - error
+  no-useless-concat:
+    - error
+  no-useless-escape:
+    - error
+  no-useless-return:
+    - error
+  prefer-promise-reject-errors:
+    - error
+  require-await:
+    - error
+  wrap-iife:
+    - error
+  yoda:
+    - error
+  no-var:
+    - error
+  arrow-parens:
+    - error
+  arrow-spacing:
+    - error
+  constructor-super:
+    - error
+  generator-star-spacing:
+    - error
+  no-class-assign:
+    - error
+  no-confusing-arrow:
+    - error
+  no-const-assign:
+    - error
+  no-dupe-class-members:
+    - error
+  no-duplicate-imports:
+    - error
+  no-useless-computed-key:
+    - error
+  no-useless-constructor:
+    - error
+  no-useless-rename:
+    - error
+  prefer-const:
+    - error
+  prefer-rest-params:
+    - error
+  prefer-spread:
+    - error
+  require-yield:
+    - error
+  no-catch-shadow:
+    - error
+  no-delete-var:
+    - error
+  no-label-var:
+    - error
+  no-restricted-globals:
+    - error
+  no-shadow:
+    - warn
+  no-shadow-restricted-names:
+    - error
+  no-use-before-define:
+    - error
+  no-undefined:
+    - error
+  consistent-this:
+    - error
+  camelcase:
+    - error
+  brace-style:
+    - error
+  func-call-spacing:
+    - error
+  func-name-matching:
+    - error
+  function-paren-newline:
+    - error
+    - multiline
+  id-blacklist:
+    - error
+  new-cap:
+    - error
+  new-parens:
+    - error
+  no-lonely-if:
+    - error
+  no-tabs:
+    - error
+  no-nested-ternary:
+    - error
+  no-restricted-syntax:
+    - error
+  no-unneeded-ternary:
+    - error
+  no-whitespace-before-property:
+    - error
+  nonblock-statement-body-position:
+    - error
+  semi-spacing:
+    - error
+  no-multiple-empty-lines:
+    - warn
+    - max: 1
+
+# https://github.com/yannickcr/eslint-plugin-react
+  react/jsx-uses-vars: 2
+  react/jsx-uses-react: 2
+  react/jsx-pascal-case: 2
+  react/jsx-no-undef: 2
+  react/jsx-indent: 1
+  react/jsx-no-duplicate-props: 2
+  react/jsx-no-comment-textnodes: 2
+  react/jsx-handler-names: 1
+  react/no-did-mount-set-state: 1
+  react/no-children-prop: 1
+  react/no-multi-comp: 1
+  react/no-render-return-value: 2
+  react/no-typos: 2
+  react/no-unused-state: 2
+  react/require-render-return: 2
+  react/prop-types: 1
+  react/display-name: 1

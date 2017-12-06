@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Profile from './Profile_Data'
+import Profile from './Profile_Data';
 
 class DoctorForm extends Component{
     constructor(props){
@@ -26,11 +25,7 @@ class DoctorForm extends Component{
 
     handleDeletePhone(phoneIndex,drIndex) { //this deletes a phone number
         var temp = this.state.profile;            
-        console.log(`dr index: ${JSON.stringify(drIndex)}`)     
-            console.log(`phone index: ${JSON.stringify(phoneIndex)}`)       
-            console.log(`doctors length: ${JSON.stringify(temp.doctors.length)}`)        
-            console.log(`doctors: ${JSON.stringify(temp.doctors[0])}`)
-            console.log(`doctors length: ${JSON.stringify(temp.doctors[0].phones[0])}`)  
+         
         if (phoneIndex > 0)
         {
         temp.doctors[drIndex].phones.splice(phoneIndex, 1);

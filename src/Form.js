@@ -1,31 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Profile from './Profile_Data';
-  class BasicForm extends Component {      
-          constructor( props ) {
-            super( props );
-            this.state = {
-              profile: Profile,
-              // firstName: '',
-              // lastName: '',
-              // addressLine1: '',
-              // addressLine2: '',
-              // addressCity: '',
-              // addressState: '',
-              // addressZip: '',
-              // phones: [],
-              // email: '',
-              // relationship: ''
-            };
-            this.handleAddPhone = this.handleAddPhone.bind(this);
-            this.handleDeletePhone = this.handleDeletePhone.bind(this);
-          }
+class BasicForm extends Component{      
+    constructor(props){
+        super(props);
+        this.state = {
+            profile: Profile,
+        };
+        this.handleAddPhone = this.handleAddPhone.bind(this);
+        this.handleDeletePhone = this.handleDeletePhone.bind(this);
+    }
 
-          handleAddPhone() { //this adds a phone number box
-            var tempProfile = this.state.profile;
-            tempProfile.caregiver.phones.push({label: '', number: ''}) ;
-            this.setState({profile: tempProfile});
-          }      
+    handleAddPhone(){ //this adds a phone box
+        const tempProfile = this.state.profile;
+        tempProfile.caregiver.phones.push({label: '', number: ''});
+        this.setState({profile: tempProfile});
+    }      
 
           handleDeletePhone(idx) { //this deletes a phone number box
             var hi = this.state.profile;
@@ -36,36 +26,34 @@ import Profile from './Profile_Data';
             
           }   
 
-          componentDidMount(){
-            axios('http://localhost:3000/carebook')
+    componentDidMount(){
+        axios('http://localhost:3000/carebook')
             .then(function(response){
-              this.setState(
-                response.data
-              )
-            }
-          ).catch(function (error) {
-              console.log(`initial request error: ${JSON.stringify(error)}`);
+                this.setState(response.data);
             })
-          }
+            .catch(function(error){
+                console.log(`initial request error: ${JSON.stringify(error)}`);
+            });
+    }
 
-          submitHandler(){
-            axios.post('Where we will post the thing', {
-              firstName: this.state.firstName,
-              lastName: this.state.lastName,
-              addressLine1: this.state.addressLine1,
-              addressLine2: this.state.addressLine2,
-              addressCity: this.state.addressCity,
-              addressState: this.state.addressState,
-              addressZip: this.state.addressZip,
-              phone: this.state.phone,
-              email: this.state.email,
-              relationship: this.state.relationship,
+    submitHandler(){
+        axios.post('Where we will post the thing', {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            addressLine1: this.state.addressLine1,
+            addressLine2: this.state.addressLine2,
+            addressCity: this.state.addressCity,
+            addressState: this.state.addressState,
+            addressZip: this.state.addressZip,
+            phone: this.state.phone,
+            email: this.state.email,
+            relationship: this.state.relationship,
+        })
+            .then(function(response){
+                console.log(response);
             })
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(`submit handler error: ${JSON.stringify(error)}`);
+            .catch(function(error){
+                console.log(`submit handler error: ${JSON.stringify(error)}`);
             });
           }
 
@@ -128,6 +116,5 @@ import Profile from './Profile_Data';
           </form>
       );
     }
-  }
-
-  export default BasicForm;
+}
+export default BasicForm;

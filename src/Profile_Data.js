@@ -18,23 +18,25 @@ const Profile={
         relationship: ''
     },
     child: {
-        firstName: "Rob",
-        lastName: "Dahl",
-        sex: "male", 
-        birthdate: "04/29/1992",
+        firstName: "",
+        lastName: "",
+        sex: "", 
+        birthdate: "",
         height: "",
         weight: "",
         insurance: "",
         diagnoses: [{
             diagnosis: ""
         }],
-        allergies: [],
+        allergies: [{
+            allergy: ""
+        }],
         history: ""
     },
     doctors: [{
         label: "",
-        firstName: "Andrew",
-        lastName: "Yeung",
+        firstName: "",
+        lastName: "",
         phones: [{
             label: "",
             number: ""
@@ -76,6 +78,6 @@ const Profile={
         //     phone: "",
         // }]
     }]
-}
+};
 
 export default Profile;
