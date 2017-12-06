@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Profile from './Profile_Data';
+import Input from './Input';
+
 class Pharmacy extends Component {      
     constructor( props ) {
       super( props );
@@ -18,8 +20,16 @@ class Pharmacy extends Component {
         //     phone: "",
         // }]
       };
+
+      this.setName = this.setName.bind(this);
     }
    
+    setName(name, pharmacyId) {
+        var tempProfile = this.state.profile; 
+        tempProfile.pharmacy[pharmacyId].name = name; 
+        this.setState({profile: tempProfile})
+    }
+
 render() {
     const pharmacy= this.state.profile.pharmacy;
     return (
@@ -28,8 +38,7 @@ render() {
               <input className = "openItInput" id="togglePharm" type="checkbox"></input><label className = "openIt" for="togglePharm"></label>
               <h2>Pharmacies</h2>
                 <div id="expandPharm"><br/>
-            <label htmlFor="name"></label>
-                <input className = "text" field="name" id="name" value={pharmacy[0].name} onChange={e => {var tempProfile = this.state.profile; tempProfile.pharmacy[0].name = e.target.value; this.setState({profile: tempProfile})}}  placeholder = "Pharmacy Name"/>
+                <Input name="name" placeholder="Pharmacy Name" onChange={this.setName} value={pharmacy[0].name} index={0} />
                 <label htmlFor="addressLine1"></label>
                     <input className = "text" field="line1" id="line1" value={pharmacy[0].addresses[0].line1} onChange={e => {var tempProfile = this.state.profile; tempProfile.pharmacy[0].addresses[0].line1 = e.target.value; this.setState({profile: tempProfile})}}  placeholder="Address Line 1"/>
                 <label htmlFor="addressLine2" ></label>
