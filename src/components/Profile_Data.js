@@ -53,13 +53,14 @@ const Profile={
     }],
     pharmacy: [{
         name: "",
-        addresses: [{
+        pharmacist: "",
+        address: {
             line1: "", 
             line2: "", 
             city: "", 
             state: "", 
             zip: ""
-        }],
+        },
         phone: "",
     }],
     medication: [{
