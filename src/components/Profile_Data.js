@@ -2,18 +2,18 @@ const Profile={
     caregiver: {
         firstName: "",
         lastName: "",
-        addresses: [{
+        address: {
             label: "",
             line1: "", 
             line2: "", 
             city: "", 
             state: "", 
             zip: ""
-        }],
-        phones: [{
+        },
+        phone: {
             label: "",
             number: ""
-        }],
+        },
         email: '',
         relationship: ''
     },
