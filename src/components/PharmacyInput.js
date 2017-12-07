@@ -15,7 +15,7 @@ class PharmacyInput extends Component {
     this.setPhone = this.setPhone.bind(this);
   }
 
-  setName(name) {
+setName(name) {
     var tempPharmacy = this.props.pharmacy; 
     tempPharmacy.name = name; 
     this.props.setPharmacy(tempPharmacy);
