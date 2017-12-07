@@ -61,10 +61,6 @@ class ChildForm extends Component{
                 <input className = "openItInput" id="toggleChild" type="checkbox"></input><label className = "openIt" for="toggleChild"></label>
               <h2>Child Information</h2>
                 <div id="expandChild"><br/>
-                    <h2>
-              Child Information
-                    </h2>
-                    <br/>
                     <Input name="firstName" placeholder="First Name" onChange={this.setFirstName} value={child.firstName}/>
                     <label htmlFor="firstName"></label>
                     <input 
