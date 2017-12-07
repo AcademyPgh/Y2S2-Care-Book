@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Profile from './Profile_Data';
+import Input from './Input';
 
 class ChildForm extends Component{
     constructor( props ){
@@ -11,6 +12,7 @@ class ChildForm extends Component{
         this.handleDeleteDiagnosis = this.handleDeleteDiagnosis.bind(this);
         this.handleAddAllergy = this.handleAddAllergy.bind(this);
         this.handleDeleteAllergy = this.handleDeleteAllergy.bind(this);
+        this.setFirstName = this.setFirstName.bind(this);
     }
 
     handleAddDiagnosis(){
@@ -41,6 +43,12 @@ class ChildForm extends Component{
         }
     }
 
+    setFirstName(name){
+        const tempProfile = this.state.profile;
+        tempProfile.child.firstName = name;
+        this.setState({profile: tempProfile});
+    }
+
     render(){
         const child = this.state.profile.child;
         return(
@@ -57,6 +65,7 @@ class ChildForm extends Component{
               Child Information
                     </h2>
                     <br/>
+                    <Input name="firstName" placeholder="First Name" onChange={this.setFirstName} value={child.firstName}/>
                     <label htmlFor="firstName"></label>
                     <input 
                         className = "text" 
